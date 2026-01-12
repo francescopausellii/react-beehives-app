@@ -1,16 +1,67 @@
-# React + Vite
+<!-- Badges -->
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-Currently, two official plugins are available:
+![ESLint](https://img.shields.io/badge/ESLint-9.39-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen?style=for-the-badge&logo=node.js&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+</div>
 
-## React Compiler
+Dashboard di monitoraggio in tempo reale per arnie intelligenti con sensori IoT.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 📊 Cosa monitoriamo
 
-## Expanding the ESLint configuration
+L'app fornisce un cruscotto per monitorare metriche ambientali e operative dell'alveare raccolte da sensori IoT (ad esempio temperatura, umidità, peso, suono).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Funzionalità tipiche:
+
+- Visualizzazioni time-series per analisi storica
+- Tabella dei rilevamenti recenti
+- Soglie configurabili e notifiche (opzionale)
+
+I dettagli esatti (tipi di sensori, intervalli, soglie) possono variare a seconda dell'installazione e dei dispositivi disponibili.
+
+Aspetti pratici rilevanti per il monitoraggio:
+
+- Cicli stagionali e variazioni di attività durante l'anno.
+- Prodotti tipici dell'alveare (miele, polline, cera, propoli, pappa reale).
+- Fenomeni operativi da considerare: perdita di risorse, saccheggio, sciamatura e invernamento.
+
+## 🧰 Librerie
+
+Le badge in alto mostrano le versioni principali; qui trovi le librerie secondarie e il loro scopo nel progetto:
+
+- **shadcn/ui** — libreria di componenti pronta, basata su Radix (stili e pattern UI)
+- **Recharts** — grafici e visualizzazioni time-series per i sensori
+- **React Router** — navigazione e routing dell'applicazione
+- **Lucide React** — icone vettoriali leggere per l'interfaccia
+
+Suggerimenti:
+
+- Se aggiungi integrazioni esterne, incapsula chiamate API in una cartella `src/services`.
+
+## 🚀 Quick Start
+
+```bash
+# Installa le dipendenze
+npm install
+
+# Avvia il server di sviluppo
+npm run dev
+
+# Build per produzione
+npm run build
+
+# Preview build di produzione
+npm run preview
+```
+
+---
+
+<div align="center">
+Made with 🐝 for beekeepers
+</div>
