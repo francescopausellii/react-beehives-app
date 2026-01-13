@@ -1,44 +1,39 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { bee } from "@lucide/lab";
+import { Icon } from "lucide-react";
+import BeehiveInfoCard from "./components/beehive-info-card";
 
 function App() {
   return (
-    <div className="mx-auto max-w-7xl p-8 text-center">
-      <div className="flex justify-center">
-        <a
-          href="https://vite.dev"
-          target="_blank"
-          className="p-6 transition hover:drop-shadow-[0_0_2em_#646cffaa]"
-        >
-          <img src={viteLogo} alt="Vite logo" className="h-24" />
-        </a>
+    <div className="min-h-screen bg-linear-to-br from-amber-50 to-yellow-100 p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <header className="mb-8 flex items-center flex-col">
+          <h1 className="text-4xl font-bold text-amber-900 mb-2 flex gap-2">
+            <Icon iconNode={bee} size={40} />
+            Arnia Digitale
+          </h1>
+          <p className="text-amber-700">
+            Sistema di monitoraggio intelligente per apicoltura
+          </p>
+        </header>
 
-        <a
-          href="https://react.dev"
-          target="_blank"
-          className="p-6 animate-spin-slow transition hover:drop-shadow-[0_0_2em_#61dafbaa]"
-        >
-          <img src={reactLogo} alt="React logo" className="h-24" />
-        </a>
+        {/* Cards Grid */}
+        <div>
+          <div className="flex"></div>
+          <BeehiveInfoCard
+            name="Arnia Gialla"
+            espType="Wemos D1 Mini"
+            espMacAddress="5C:CF:7F:FC:9C:AC"
+            latitude={43.4593977}
+            longitude={12.2397928}
+          />
+        </div>
+
+        {/* Footer Info */}
+        <footer className="mt-12 text-center text-sm text-amber-600">
+          <p>Monitoraggio in tempo reale della tua arnia</p>
+        </footer>
       </div>
-
-      <h1 className="my-6 text-4xl font-bold">Vite + React</h1>
-
-      <div className="p-8">
-        <button className="rounded-lg border border-gray-300 px-4 py-2 font-medium transition hover:border-indigo-500 hover:text-indigo-500">
-          Ready to go 🚀
-        </button>
-
-        <p className="mt-4 text-sm">
-          Edit{" "}
-          <code className="rounded bg-gray-100 px-1 py-0.5">src/App.jsx</code>{" "}
-          and save to test HMR
-        </p>
-      </div>
-
-      <p className="text-gray-400">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
 }
