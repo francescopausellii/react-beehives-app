@@ -11,8 +11,8 @@ export default function BeehiveInfoCard({
   name,
   espType,
   espMacAddress,
-  latitude,
-  longitude,
+  latitude = 0,
+  longitude = 0,
 }) {
   const [showData, setShowData] = useState(false);
 
