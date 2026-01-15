@@ -1,15 +1,36 @@
 import { useEffect, useState } from "react";
 import BeehiveInfoCard from "./components/beehive-info-card";
+import DataTable from "./components/data-table";
 import Header from "./components/header";
 
 function App() {
   const [beehives, setBeehives] = useState([]);
   const [selectedBeehive, setSelectedBeehive] = useState();
+  const [selectData, setSelectedData] = useState([]);
 
   useEffect(() => {
-    const getBeehives = async () => {
-      const response = await fetch(
-        "https://api4api-4998.restdb.io/rest/beehives",
+    const loadBeehives = async () => {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/beehives`, {
+        headers: {
+          "Content-Type": "application/json",
+          "x-apikey": import.meta.env.VITE_API_KEY,
+        },
+      });
+      const data = await res.json();
+
+      setBeehives(data);
+      setSelectedBeehive(data[0]);
+    };
+
+    loadBeehives();
+  }, []);
+
+  useEffect(() => {
+    if (!selectedBeehive) return;
+
+    const loadBeehiveData = async () => {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/datas?q={"id_beehive": ${selectedBeehive.id}}&h={"$orderby": {"timestamp": -1}}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -17,12 +38,11 @@ function App() {
           },
         },
       );
-      const data = await response.json();
-      setBeehives(data);
-      setSelectedBeehive(data[0]);
+      const data = await res.json();
+      setSelectedData(data);
     };
 
-    getBeehives();
+    loadBeehiveData();
   }, [selectedBeehive]);
 
   return (
@@ -31,8 +51,8 @@ function App() {
         {/* Header */}
         <Header
           beehives={beehives}
-          onBeehiveChange={(value) => {
-            const selected = beehives.find((bee) => bee._id === value);
+          onBeehiveChange={async (value) => {
+            const selected = beehives.find((bee) => bee.id === value);
             setSelectedBeehive(selected);
           }}
         />
@@ -46,6 +66,8 @@ function App() {
             latitude={selectedBeehive?.latitude}
             longitude={selectedBeehive?.longitude}
           />
+
+          <DataTable datas={selectData} />
         </div>
 
         {/* Footer Info */}
