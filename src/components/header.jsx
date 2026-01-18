@@ -10,10 +10,7 @@ import {
   SelectValue,
 } from "./ui/select";
 
-export default function Header({ beehives, onBeehiveChange }) {
-  const initialBeehive =
-    beehives && beehives.length > 0 ? beehives[0].id : null;
-
+export default function Header({ beehives, selectedBeehive, onBeehiveChange }) {
   return (
     <header className="mb-8 flex items-center flex-col">
       <h1 className="text-4xl font-bold text-amber-900 mb-2 flex gap-2">
@@ -26,7 +23,7 @@ export default function Header({ beehives, onBeehiveChange }) {
 
       <Select
         onValueChange={(value) => onBeehiveChange?.(value)}
-        value={initialBeehive}
+        value={selectedBeehive?.id}
       >
         <SelectTrigger className="w-45 bg-white mt-5">
           <SelectValue placeholder="Seleziona un arnia" />
