@@ -63,7 +63,7 @@ Esempio di utilizzo nel codice:
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 const pollingInterval = Number(import.meta.env.VITE_POLLING_INTERVAL ?? 5000);
 ```
-> ⚠️ **Nota**: non inserire mai segreti o token sensibili nel .env frontend. Le variabili VITE_* sono incluse nel bundle finale.
+> ⚠️ **Nota**: non inserire mai segreti o token sensibili nel .env frontend; le variabili `VITE_*` sono incluse nel bundle.
 
 Nella repository, le variabili presenti servono esclusivamente come esempi a fini dimostrativi ed educativi.
 ## 🚀 Quick Start
