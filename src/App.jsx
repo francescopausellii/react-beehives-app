@@ -68,6 +68,7 @@ function App() {
         {/* Header */}
         <Header
           beehives={beehives}
+          selectedBeehive={selectedBeehive}
           onBeehiveChange={async (value) => {
             const selected = beehives.find((bee) => bee.id === value);
             setSelectedBeehive(selected);
