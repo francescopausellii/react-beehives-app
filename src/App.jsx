@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import BeehiveInfoCard from "./components/beehive-info-card";
-import DataTable from "./components/data-table";
+import DataTabs from "./components/data-tabs";
 import Header from "./components/header";
 
 function App() {
   const [beehives, setBeehives] = useState([]);
   const [selectedBeehive, setSelectedBeehive] = useState();
   const [selectData, setSelectedData] = useState([]);
+  const [latestMetrics, setLatestMetrics] = useState({
+    temperature: 0,
+    humidity: 0,
+    sound: 0,
+    weight: 0,
+  });
 
   useEffect(() => {
     const loadBeehives = async () => {
@@ -38,7 +44,18 @@ function App() {
           },
         },
       );
+
       const data = await res.json();
+
+      const metrics = {
+        temperature:
+          data.find((d) => d.value_type === "temperature")?.value ?? 0,
+        humidity: data.find((d) => d.value_type === "humidity")?.value ?? 0,
+        sound: data.find((d) => d.value_type === "sound")?.value ?? 0,
+        weight: data.find((d) => d.value_type === "weight")?.value ?? 0,
+      };
+
+      setLatestMetrics(metrics);
       setSelectedData(data);
     };
 
@@ -65,9 +82,10 @@ function App() {
             espMacAddress={selectedBeehive?.esp_mac_address}
             latitude={selectedBeehive?.latitude}
             longitude={selectedBeehive?.longitude}
+            metrics={latestMetrics}
           />
 
-          <DataTable datas={selectData} />
+          <DataTabs datas={selectData} />
         </div>
 
         {/* Footer Info */}

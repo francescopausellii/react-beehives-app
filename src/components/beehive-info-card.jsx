@@ -13,15 +13,14 @@ export default function BeehiveInfoCard({
   espMacAddress,
   latitude = 0,
   longitude = 0,
+  metrics = {
+    temperature: 0,
+    humidity: 0,
+    sound: 0,
+    weight: 0,
+  },
 }) {
   const [showData, setShowData] = useState(false);
-
-  const [metrics] = useState(() => ({
-    temperature: Math.floor(Math.random() * 101),
-    humidity: Math.floor(Math.random() * 101),
-    sound: Math.floor(Math.random() * 101),
-    weight: Math.floor(Math.random() * 101),
-  }));
 
   return (
     <Card className="bg-white/80 backdrop-blur max-w-lg mx-auto">
@@ -32,13 +31,11 @@ export default function BeehiveInfoCard({
               <MapPin className="h-5 w-5 shrink-0 text-amber-600" />
               <span className="truncate text-lg sm:text-xl">{name}</span>
             </div>
-
             <div className="flex items-center gap-1.5 text-xs font-normal text-muted-foreground">
               <Wifi className="h-3.5 w-3.5 shrink-0" />
               {espType}
             </div>
           </div>
-
           <ToggleData onChange={(checked) => setShowData(checked)} />
         </CardTitle>
       </CardHeader>
