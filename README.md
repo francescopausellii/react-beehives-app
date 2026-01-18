@@ -44,6 +44,28 @@ Suggerimenti:
 
 - Se aggiungi integrazioni esterne, incapsula chiamate API in una cartella `src/services`.
 
+## 🔐 Variabili d'ambiente
+
+Una variabile d'ambiente è un valore di configurazione esterno all'applicazione che può cambiare a seconda dell'ambiente (sviluppo, test, produzione) senza modificare il codice.
+
+In Vite, le variabili d'ambiente che devono essere accessibili al frontend devono iniziare con il prefisso `VITE_`.
+
+Crea un file `.env` (o `.env.local`) nella root del progetto:
+```env
+VITE_API_BASE_URL=https://api.example.com
+VITE_ENABLE_NOTIFICATIONS=true
+VITE_APP_ENV=development
+```
+Per l'ambiente di produzione, crea un file `.env.production`.
+
+Esempio di utilizzo nel codice:
+```javascript
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const pollingInterval = Number(import.meta.env.VITE_POLLING_INTERVAL ?? 5000);
+```
+> ⚠️ **Nota**: non inserire mai segreti o token sensibili nel .env frontend; le variabili `VITE_*` sono incluse nel bundle.
+
+Nella repository, le variabili presenti servono esclusivamente come esempi a fini dimostrativi ed educativi.
 ## 🚀 Quick Start
 
 ```bash
